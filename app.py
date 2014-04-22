@@ -25,4 +25,4 @@ def encoded():
       return render_template('encoded.html', encoded_url='')
 
 if __name__ == '__main__':
-  app.run(0.0.0.0:80)
+  app.run(host='0.0.0.0' port='80')
