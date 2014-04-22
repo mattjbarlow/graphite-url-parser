@@ -15,10 +15,12 @@ def decode(my_url):
 
 def encode(my_url):
 
-    subbed_functions = re.sub('\n', '&', my_url)
+    subbed_functions = unindent_parentheses(my_url)
+    subbed_functions = re.sub('\n', '&', subbed_functions)
     subbed_functions = re.sub('\?\&', '?', subbed_functions)
     subbed_functions = re.sub('\&$', '', subbed_functions)
-    return urllib.quote(subbed_functions, safe="/:=&?*")
+    subbed_functions = re.sub(' *', '', subbed_functions)
+    return urllib.quote(subbed_functions, safe="/:=&?*()")
 
 def indent_parentheses(my_url):
     stack = ""
@@ -35,6 +37,22 @@ def indent_parentheses(my_url):
 
     return stack
             
+def unindent_parentheses(my_url):
+    stack = ""
+    mycount = 0
+    for character in my_url:
+        if character == '(':
+            mycount = mycount + 1
+            stack = stack + character
+        elif character == ')':
+            mycount = mycount - 1
+            stack = stack + character
+        elif character == '\n' and mycount > 0:
+            continue
+        else:
+            stack = stack + character
+
+    return stack
         
             
         
