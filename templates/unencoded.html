@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<form method="post" action="{{ url_for('encoded') }}">
+  <label for="unencoded_url"></label>
+  <textarea name="unencoded_url" rows="20" cols="80">{{ unencoded_url }}</textarea><br />
+  <input type="submit" value="Make URL"/>
+</form>
+<p>Now hit Make URL to turn it back into a URL again.</p>
+{% endblock %}

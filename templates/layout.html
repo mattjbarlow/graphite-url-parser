@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Graphite URL Parser</title>    
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='default.css') }}>
+  </head>
+  <body>
+   
+    <header>
+      <div class="container">
+        <h1 class="logo">Graphite URL Parser</h1>
+      </div>
+    </header> 
+
+    <a href="{{ url_for('encoded') }}">Home</a>
+    <hr>
+     
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+<hr />
+<a href="https://twitter.com/mattjbarlow">Follow @mattjbarlow on twitter</a>     
+  </body>
+</html>

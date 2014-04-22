@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<form method="post" action="{{ url_for('unencoded') }}">
+  <label for="encoded_url">Graphite URL</label>
+  <input type="text" name="encoded_url" size="80" value="{{ encoded_url }}"/><br />
+  <input type="submit" value="Make Readable" />
+</form>
+
+<p>Enter a Graphite URL to have it made readable. Example URL:</p>
+<pre>
+http://graphite/render?target=summarize(derivative(app.numUsers),"1min")&title=New_Users_Per_Minute
+</pre>
+{% endblock %}
